@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
-    [SerializeField] private float m_JumpForce =1200f;                          // Amount of force added when the player jumps.
+    [SerializeField] private float m_JumpForce =0f;                          // Amount of force added when the player jumps.
     [Range(0, 1)] [SerializeField] private float m_CrouchSpeed = .36f;          // Amount of maxSpeed applied to crouching movement. 1 = 100%
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
@@ -20,7 +20,7 @@ public class CharacterController2D : MonoBehaviour
     private Vector3 m_Velocity = Vector3.zero;
     private bool shouldClimb = false;  //whether or not the player should climb.
 
-    private float speed = 20f;
+    private float speed = 50f;
 
     [Header("Events")]
     [Space]
@@ -129,7 +129,7 @@ public class CharacterController2D : MonoBehaviour
             }
         }
         //If the player should jump...
-        if (m_Grounded && jump)
+        if (m_Grounded && jump && m_Rigidbody2D.velocity.y <= 0.0f)
         {
             // Add a vertical force to the player.
             m_Grounded = false;

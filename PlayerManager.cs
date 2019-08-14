@@ -809,7 +809,7 @@ namespace Assets.Scripts
             }
             else
             {
-                // Let the max generated number be 90 if there are no decimals
+                // The options should be in the same range as the answer
                 option1 = answer + rand.Next(-10, 10);
                 option2 = answer + rand.Next(-10, 10);
             }
